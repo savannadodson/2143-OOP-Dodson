@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 //                   
-// Author:           Terry Griffin
-// Email:            terry.griffin@msutexas.edu
+// Author:           Savanna Dodson
+// Email:            smdodson1105@my.msutexas.edu
 // Label:            L02
 // Title:            Array Based Stack Example
 // Course:           2143
