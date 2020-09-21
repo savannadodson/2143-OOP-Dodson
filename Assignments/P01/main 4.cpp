@@ -1,38 +1,3 @@
- 
-  /$$   /$$  /$$$$$$    /$$                                  
- | $$  | $$ /$$$_  $$ /$$$$                                  
- | $$  | $$| $$$$\ $$|_  $$                                  
- | $$$$$$$$| $$ $$ $$  | $$                                  
- | $$__  $$| $$\ $$$$  | $$                                  
- | $$  | $$| $$ \ $$$  | $$                                  
- | $$  | $$|  $$$$$$/ /$$$$$$                                
- |__/  |__/ \______/ |______/                                
-                                                             
-                                                             
-                                                             
-   /$$$$$$    /$$ /$$   /$$  /$$$$$$                         
-  /$$__  $$ /$$$$| $$  | $$ /$$__  $$                        
- |__/  \ $$|_  $$| $$  | $$|__/  \ $$                        
-   /$$$$$$/  | $$| $$$$$$$$   /$$$$$/                        
-  /$$____/   | $$|_____  $$  |___  $$                        
- | $$        | $$      | $$ /$$  \ $$                        
- | $$$$$$$$ /$$$$$$    | $$|  $$$$$$/                        
- |________/|______/    |__/ \______/                         
-                                                             
-                                                             
-                                                             
-  /$$$$$$$   /$$$$$$  /$$$$$$$   /$$$$$$   /$$$$$$  /$$   /$$
- | $$__  $$ /$$__  $$| $$__  $$ /$$__  $$ /$$__  $$| $$$ | $$
- | $$  \ $$| $$  \ $$| $$  \ $$| $$  \__/| $$  \ $$| $$$$| $$
- | $$  | $$| $$  | $$| $$  | $$|  $$$$$$ | $$  | $$| $$ $$ $$
- | $$  | $$| $$  | $$| $$  | $$ \____  $$| $$  | $$| $$  $$$$
- | $$  | $$| $$  | $$| $$  | $$ /$$  \ $$| $$  | $$| $$\  $$$
- | $$$$$$$/|  $$$$$$/| $$$$$$$/|  $$$$$$/|  $$$$$$/| $$ \  $$
- |_______/  \______/ |_______/  \______/  \______/ |__/  \__/
-                                                             
-                                                             
-                                                             
- 
 
 
 
@@ -46,7 +11,7 @@
 // Semester:         Fall 2020
 //
 // Description:
-//       Example implementation of an array based stack that holds integers.
+//       Example implementation of an array based stack that holds        //       integers.
 //
 // Usage:
 //       Nothing special right now.
@@ -56,6 +21,11 @@
 /////////////////////////////////////////////////////////////////////////////////
 #include <iostream>
 #include <string>
+#include <fstream> 
+#include <ctime>
+#include <time.h>
+#include <cmath>
+#include<climits>
 using namespace std;
 
 /**
@@ -127,21 +97,49 @@ public:
     /**
      * Push:
      *    Push item onto stack.
+     *    Calls the function full to 
+     *    see if the stack is full
      * Params:
      *    int : data
      * 
      * Returns:
      *     Void
      */
-    void Push(int data) {
+    void Push(int data)
+     {
         top++;              // move top of stack up
         size++;             // increment size
         S[top] = data;      // add item to array
-    }
+
+       Full();              //Calling the function full
+                            //to see if the stack is full
+     
+
+      //  if(capacity == 0)
+      //  {
+      //    capacity = 10;
+      //    return capacity;
+      //  }
+      //  if(capacity > 10)
+      //  {
+      //  capacity = capacity * 2;
+      //  return capacity;
+      //  }
+
+    
+   
+
+		
+  }
+
+  
 
     /**
      * Pop:
      *    remove item from stack.
+     *    If the stack is below half full 
+     *    then the stack goes down to 
+     *    half the size.
      * Params:
      *    void
      * 
@@ -152,7 +150,29 @@ public:
         int data = S[top];  // pull item from stack
         top--;              // shrink the stack
         size--;             // update our size
-        return data;        // send item back
+               // send item back
+
+      if(size < capacity/2)
+    {
+      int * S2 = new int[capacity/2];
+        
+     ///Allocate new array twice as big
+			// Copy data from S to S2
+			for (int i = 0;i < capacity/2;i++)
+		   {
+			 	S2[i] = S[i];
+			 }
+       delete[] S;
+
+			// // Point S to new array
+			 S = S2;
+       
+  
+
+    }
+    //return
+    return data; 
+       
     }
 
     /**
@@ -183,14 +203,17 @@ public:
     /**
      * Full:
      *    is the stack full?
+     *    if stack is full then the stack doubles
+     *    and copies the values over. 
      * Params:
      *    void
      * 
      * Returns:
-     *     bool : true == stack is full
+     *     void
      */
-    bool Full() 
-    {
+    void Full() 
+    {   
+        //checks to see if the stack is full
         if(top == capacity - 1)
         {
          //allocating the new memory of the array and 
@@ -201,7 +224,7 @@ public:
     
 
         //copying each stack value into the new array
-        for(int i = 0; i < size; i++)
+        for(int i = 0; i < size * 2; i++)
         {
           STwo[i] = S[i]; 
         }
@@ -213,13 +236,24 @@ public:
         //the new array
         S = STwo;
 
+        //double the size of the stack
         size = 2*size;
         }
-       
-        return top == capacity - 1;
+
+
+
+        
         
     }
-
+    /**
+     * getSize:
+     *    used to return the size of the stack
+     * Params:
+     *    void
+     * 
+     * Returns:
+     *     int
+     */    
 
     int getSize()
     {
@@ -239,7 +273,20 @@ public:
             cout << S[i] << endl;
         }
     }
+    /**
+     * getCapacity:
+     *    used to return the capacity of the stack
+     * Params:
+     *    void
+     * 
+     * Returns:
+     *     int
+     */    
 
+int GetCapacity()
+  {
+    return capacity;
+  }
     /**
      * Overloaded ostream <<
      *    Lets us print a stack using cout
@@ -278,19 +325,19 @@ public:
  *  Person P2("billy","bob",11);
  *  cout<<P2<<endl;
  */
-struct Person {
-    string fname;
-    string lname;
-    int age;
+// struct Person {
+//     string fname;
+//     string lname;
+//     int age;
 
-    Person();
-    Person(string, string, int);
+//     Person();
+//     Person(string, string, int);
 
-    friend ostream &operator<<(ostream &os, const Person p) {
-        os << p.fname << "," << p.lname << " : " << p.age << endl;
-        return os;
-    }
-};
+//     friend ostream &operator<<(ostream &os, const Person p) {
+//         os << p.fname << "," << p.lname << " : " << p.age << endl;
+//         return os;
+//     }
+// };
 
 /**
  * Constructor:
@@ -301,11 +348,11 @@ struct Person {
  * Returns:
  *     void
  */   
-Person::Person() {
-    fname = "";
-    lname = "";
-    age = 0;
-}
+// Person::Person() {
+//     fname = "";
+//     lname = "";
+//     age = 0;
+// }
 
 /**
  * Constructor:
@@ -318,43 +365,79 @@ Person::Person() {
  * Returns:
  *     void
  */ 
-Person::Person(string f, string l, int a) {
-    fname = f;
-    lname = l;
-    age = a;
-}
+// Person::Person(string f, string l, int a) {
+//     fname = f;
+//     lname = l;
+//     age = a;
+// }
 
-int main() {
+int main()
+ {
+   //opeining the input file and output file
+    ifstream fin;
+    fin.open("input.txt");
+
+    ofstream fout;
+	fout.open("output.txt");
+
+   //declaring the variables 
+   int max_size = INT_MIN;
+   int value;
+   string action;
+
     Stack S1;           // calls default constructor
-    Stack S2(25);       // calls overloaded constructor
-
-    S1.Push(7);
-    S1.Push(4);
-    S1.Push(8);
-    S1.Push(2);
-    S1.Push(7);
-    S1.Push(4);
-    S1.Push(8);
-    S1.Push(2);
-    S1.Push(8);
-    S1.Push(2);
-    //prints if the stack is full or not
-    if (S1.Empty() == false)
-    {
-      cout << "The Stack is full!";
-    }
-    else
-    {
-      cout << "Error: The stack is empty! ";
-    }
+    Stack S2(10);       // calls overloaded constructor
+   
+  fout << "Name: Savanna Dodson" << '\n';
+  fout << "Program: P01" << '\n';
+  fout << "Date: 16 September 2020" << '\n';
+   
     
-    S1.Print();
-    //gets the size of the first array
-    cout << "The size is: " << S1.getSize() << '\n';
-    S1.Full();
-    S1.Print();
-    //gets the size of the new array after it is doubled
-    cout << "The size is: " << S1.getSize() << '\n';
+    // S1.Push(7);
+    // S1.Push(4);
+    // S1.Push(8);
+    // S1.Push(2);
+    // S1.Push(7);
+    // S1.Push(4);
+    // S1.Push(8);
+    // S1.Push(2);
+    // S1.Push(8);
+    // S1.Push(2);
+    
+    //printing out the start size of the stack
+    fout << "Start size : " << S1.GetCapacity() << endl;
+    while (!fin.eof())
+	{
+    //reading in push or pop
+		fin >> action; 
+    
+    //if the command is push then it will do things
+		if (action == "push") 
+		{
+      fin >> value;
+			S1.Push(value);
+			// S.increaseSize();
+			//curr_size++;
+
+     
+
+			
+		}
+    //if the command is pop then it will do these actions
+		else if (action == "pop") //if command = pop
+		{
+      //lets you know if the stack is empty/nothing is in it
+			if(S1.Pop() == -1)
+      {
+        fout << "stack is empty! \n";
+      }
+
+			
+
+			//fout << "-" << " : " << curr_size << " -> "
+			//<< curr_size_pop << endl;
+		}
+    
 
 //     cout << "Popped a: " << S1.Pop() << endl;
 //     cout << "Popped a: " << S1.Pop() << endl;
@@ -375,4 +458,14 @@ int main() {
 //     Person P2("dudley", "doowright", 30);   // uses overloaded constructor
 
 //     cout << P2 << endl;     // calls overloaded ostream method
+
 }
+//prints out the maximum size of the stack
+//and prints the ending size of stack
+     fout<< "Max size : " << max_size << endl;
+      fout<< "Ending size : " << S1.getSize()<<endl;
+
+  //closes the input and output file
+  fin.close();
+	fout.close();
+ }
