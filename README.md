@@ -15,6 +15,7 @@
 | :---: | -------- | -------------------------------- |
 |   01  |    H01   | Commenting on a Program          |
 |   02  |    P01   | Finishing the array stack program|
+|   03  |    H02   | Vocab and definitions            |
 
 
 ### Instructions
