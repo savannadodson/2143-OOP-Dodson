@@ -1,6 +1,3 @@
-
-
-
 ///////////////////////////////////////////////////////////////////////////////
 //                   
 // Author:           Savanna Dodson
@@ -71,10 +68,11 @@ public:
      * Returns:
      *     Void
      */
-    Stack() {
+    Stack() 
+    {
         capacity = 10;          // set array size
         S = new int[capacity];  // allocate new memory
-        top = -1;               // initialize top of stack
+        top = 0;               // initialize top of stack
         size = 0;               // set stack to empty
     }
 
@@ -87,7 +85,8 @@ public:
      * Returns:
      *     Void
      */
-    Stack(int cap) {
+    Stack(int cap) 
+    {
         capacity = cap;         // set array size      
         S = new int[capacity];  // allocate new memory
         top = -1;               // initialize top of stack
@@ -111,7 +110,7 @@ public:
         size++;             // increment size
         S[top] = data;      // add item to array
 
-       Full();              //Calling the function full
+        Full();              //Calling the function full
                             //to see if the stack is full
      
 
@@ -126,13 +125,8 @@ public:
       //  return capacity;
       //  }
 
-    
-   
-
 		
   }
-
-  
 
     /**
      * Pop:
@@ -189,9 +183,9 @@ public:
        //if the stack is empty, it returns -1
        //in the main it will read -1 and print that
        //the stack is full
-        if(top == -1)
+        if(top == 0)
         {
-          return -1;
+          return 1;
         }
         //if the stack is full, return false
         //the return of false will print in main 
@@ -224,7 +218,7 @@ public:
     
 
         //copying each stack value into the new array
-        for(int i = 0; i < size * 2; i++)
+        for(int i = 0; i < size; i++)
         {
           STwo[i] = S[i]; 
         }
@@ -240,10 +234,6 @@ public:
         size = 2*size;
         }
 
-
-
-        
-        
     }
     /**
      * getSize:
@@ -268,8 +258,10 @@ public:
      * Returns:
      *     void
      */    
-    void Print() {
-        for (int i = top; i >= 0; i--) {
+    void Print() 
+    {
+        for (int i = top; i >= 0; i--) 
+        {
             cout << S[i] << endl;
         }
     }
@@ -298,13 +290,13 @@ int GetCapacity()
      * Returns:
      *     ostream 
      */
-    friend ostream &operator<<(ostream &os, const Stack s) {
-        os << "Overloaded!!" << endl;
-        for (int i = s.top; i >= 0; i--) {
-            os << s.S[i] << endl;
-        }
-        return os;
-    }
+    // friend ostream &operator<<(ostream &os, const Stack s) {
+    //     os << "Overloaded!!" << endl;
+    //     for (int i = s.top; i >= 0; i--) {
+    //         os << s.S[i] << endl;
+    //     }
+    //     return os;
+    // }
 };
 
 /**
@@ -381,16 +373,17 @@ int main()
 	fout.open("output.txt");
 
    //declaring the variables 
-   int max_size = INT_MIN;
+   int max_size = INT_MAX;
    int value;
    string action;
+   int size;
 
     Stack S1;           // calls default constructor
     Stack S2(10);       // calls overloaded constructor
    
   fout << "Name: Savanna Dodson" << '\n';
   fout << "Program: P01" << '\n';
-  fout << "Date: 16 September 2020" << '\n';
+  fout << "Date: 16 September 2020" << '\n' << '\n';
    
     
     // S1.Push(7);
@@ -415,7 +408,9 @@ int main()
 		if (action == "push") 
 		{
       fin >> value;
+      size++;
 			S1.Push(value);
+      
 			// S.increaseSize();
 			//curr_size++;
 
@@ -426,6 +421,7 @@ int main()
     //if the command is pop then it will do these actions
 		else if (action == "pop") //if command = pop
 		{
+      S1.Pop();
       //lets you know if the stack is empty/nothing is in it
 			if(S1.Pop() == -1)
       {
@@ -458,14 +454,16 @@ int main()
 //     Person P2("dudley", "doowright", 30);   // uses overloaded constructor
 
 //     cout << P2 << endl;     // calls overloaded ostream method
+      fout<< "Max size : " << max_size << endl;
+      fout<< "Ending size : " << S1.getSize()<<endl;
 
 }
+  
 //prints out the maximum size of the stack
 //and prints the ending size of stack
-     fout<< "Max size : " << max_size << endl;
-      fout<< "Ending size : " << S1.getSize()<<endl;
+    
 
   //closes the input and output file
   fin.close();
-	fout.close();
+  fout.close();
  }
