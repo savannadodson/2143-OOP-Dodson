@@ -1,0 +1,61 @@
+## H02
+
+- Name: Savanna Dodson
+- Date: 20 Sep 2020
+- Class: 2143 OOP
+
+## Definitions
+
+#### Abstraction
+> It is a simplified version of something technical, such as a function or aan objeect in aa program.
+
+####Attributes / Properties
+> A changeable property or characterisitc of some component of aa program that can be set to different values.
+
+####Class
+> It serves as a template for creating, or instaantiating specific objects with in a program.
+
+####Class Variable
+> Defines a specific attribute or property for a class and may be referred to as a memeber variable/static member variable
+
+####Composition
+> It describes a class that references one or more objects of other classes in instance variables. Allows you to model a has-a-association between objects.
+
+####Encapsulation
+> It describes the idea of bundling data and methods tthat work on data within one unit
+
+####Friends
+> Is a function that is given the same acceess as methods to private and protected data. A friend functtion is declared by the class that is granting access, like methods.
+
+####Inheritance
+> refers to the ability of an object to take on one or more characteristics from other classes of objects. The characteristics inherited are usually instance variables or member functions.
+
+####Instance Variable
+>  is a variable defined in a class (i.e. a member variable), for which each instantiated object of the class has a separate copy, or instance. An instance variable is similar to a class variable.
+
+####Member Variable
+> member variable (sometimes called a member field) is a variable that is associated with a specific object, and accessible for all its methods (member functions).
+
+####Method
+>A method in object-oriented programming (OOP) is a procedure associated with a message and an object. An object consists of data and behavior; these comprise an interface, which specifies how the object may be utilized by any of its various consumers.
+
+####Multiple Inheritance
+> Multiple inheritance is a feature of some object-oriented computer programming languages in which an object or class can inherit characteristics and features from more than one parent object or parent class.
+
+####Object
+>Objects provide a structured approach to programming. By defining a dataset as a custom object, a developer can easily create multiple similar objects and modify existing objects within a program. Additionally, objects provide "encapsulation," meaning the data within an object is protected from being modified or destroyed by other functions or methods unless explicitly allowed.
+
+####Overloading
+> overloading or method overloading is the ability to create multiple functions of the same name with different implementations.
+
+####Polymorphism
+> Is a feature of object-oriented programming languages that allows a specific routine to use variables of different types at different times
+
+####Public / Private / Protected
+> Public: is a keyword that is used as an access modifier for methods and variables. A variable (field) or a method declared as public is visible to and may be accessed by all classes defined in different packages.
+> Private: is a keyword that specifies access level and provides programmers with some control over which variables and methods are hidden in a class.
+> Protected: a class and its subclasses have access to the variable, but not any other classes, they need to use a getter/setter to do anything with the variable. A private means that only that class has direct access to the variable, everything else needs a method/function to access or change that data.
+
+####Virtual
+> is a digitally replicated version of something real. The replication, which is created with software, may not be an exact copy of the actual item, but it is similar enough in essence to be described as a digital rendition.
+
